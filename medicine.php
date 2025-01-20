@@ -20,76 +20,73 @@
         </div>
         <div class="bottom-section">
             <div class="nav-links">
-                <a href="index.html">Home</a>
+                <a href="#home">Home</a>
                 <div class="dropdown">
                     <a href="#" class="shop-link active">Shop</a>
                     <div class="dropdown-content">
                         <div class="dropdown-submenu">
                             <a href="Cat_Dog.html">Cat&Dog</a>
                             <div class="submenu-content">
-                                <a href="Food.html">Food</a>
-                                <a href="Accessories.html">Accessories</a>
-                                <a href="toys.html">Toys</a>
-                                <a href="medicine.html" class="active">Medicine</a>
+                                <a href="Food.php">Food</a>
+                                <a href="Accessories.php">Accessories</a>
+                                <a href="toys.php" class="active">Toys</a>
+                                <a href="medicine.php">Medicine</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <a href="reviews.html">Reviews</a>
-                <a href="about.html">About</a>
+                <a href="index.html">Reviews</a>
+                <a href="index.html">About</a>
                 <div class="dropdown">
-                    <a href="#">Services</a>
+                    <a href="#" class="services-link">Services</a>
                     <div class="dropdown-content">
-                        <a href="buy-sell.html">Buy&Sell</a>
-                        <a href="adoption.html">Adoption</a>
-                        <a href="health-checkup.html">Health Checkup</a>
-                        <a href="grooming.html">Grooming</a>
+                        <a href="services.html">Buy&Sell</a>
+                        <a href="services.html">Adoption</a>
+                        <a href="services.html">Health Checkup</a>
+                        <a href="services.html">Grooming</a>
                     </div>
                 </div>
             </div>
             <div class="actions">
-                <a href="myaccount.html">My Account</a>
+                <a href="myaccount.html" id="myAccountBtn">My Account</a>
                 <a href="rewards.html">Rewards</a>
                 <a href="cart.html">Cart</a>
-                <a href="contact.html">&#128222; Contact</a>
+                <a href="contact.html" class="contact">&#128222; Contact</a>
             </div>
         </div>
     </div>
 
     <!-- Cat Medicine Section -->
     <main>
-        <section class="shop-section" id="cat-medicine">
-            <h2>Cat Medicine</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="medicine1.jpg" alt="Feline Oral Care">
-                    <h3>Feline Oral Care Solution</h3>
-                    <p><span class="price">৳450.00</span> <span class="discount">৳500.00</span></p>
-                </div>
-                <div class="product-card">
-                    <img src="medicine2.jpg" alt="Vitamin Supplement">
-                    <h3>Cat Vitamin Supplement</h3>
-                    <p><span class="price">৳350.00</span> <span class="discount">৳400.00</span></p>
-                </div>
-                <div class="product-card">
-                    <img src="medicine3.jpg" alt="Anti-Flea Spray">
-                    <h3>Anti-Flea Spray</h3>
-                    <p><span class="price">৳600.00</span> <span class="discount">৳650.00</span></p>
-                </div>
-            </div>
-        </section>
+        <div class="filters-section">
+            <h3>Filter by Type</h3>
+            <ul>
+                <li><input type="checkbox" id="flea-tick" name="flea-tick"> Flea & Tick Treatment</li>
+                <li><input type="checkbox" id="dewormer" name="dewormer"> Dewormer</li>
+                <li><input type="checkbox" id="antibiotics" name="antibiotics"> Antibiotics</li>
+            </ul>
+            <h3>Price Range</h3>
+            <input type="range" min="0" max="5000" value="2500">
+        </div>
 
-        <section class="info-section">
-            <h3>Cat Medicine in Bangladesh</h3>
-            <p>We offer a variety of essential cat medicines to keep your feline healthy and happy.</p>
+        <section class="product-grid">
+            <h2>Cat Medicines</h2>
+            </section>
 
-            <h3>Cat Medicine Price in Bangladesh</h3>
-            <p>Our products are priced competitively to ensure quality healthcare for your pets.</p>
+        <div class="pagination">
+            <a href="#">&laquo;</a>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">&raquo;</a>
+        </div>
 
-            <h3>Online Cat Medicine Delivery in Bangladesh</h3>
-            <p>Enjoy fast and reliable delivery of all cat medicines across Bangladesh.</p>
-        </section>
+        <section class="details-section">
+            <h2>Medicine Details</h2>
+            </section>
     </main>
+
 
     <!-- Footer -->
     <footer class="footer">
@@ -118,5 +115,74 @@
             <p>&copy; 2025 PETOPIA. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const productGrid = document.querySelector(".product-grid");
+
+            // Fetch medicines from the backend
+            fetch("cat_medicines_backend.php?action=list")
+                .then((response) => response.json())
+                .then((medicines) => {
+                    productGrid.innerHTML = ""; 
+                    medicines.forEach((medicine) => {
+                        const productCard = `
+                            <div class="product-card" data-id="${medicine.medicine_id}">
+                                <img src="${medicine.image_url}" alt="${medicine.name}">
+                                <h3>${medicine.name}</h3>
+                                <p>
+                                    <span class="price">৳${medicine.price}</span>
+                                    <span class="discount">৳${medicine.discount_price}</span>
+                                </p>
+                            </div>`;
+                        productGrid.innerHTML += productCard;
+                    });
+
+                    // Add click event to each product card
+                    document.querySelectorAll(".product-card").forEach((card) => {
+                        card.addEventListener("click", function () {
+                            const medicineId = this.getAttribute("data-id");
+                            showMedicineDetails(medicineId);
+                        });
+                    });
+                })
+                .catch((error) => {
+                    console.error("Error fetching medicines:", error);
+                });
+        });
+
+        function showMedicineDetails(medicineId) {
+            // Fetch details of the selected medicine
+            fetch(`cat_medicines_backend.php?medicine_id=${medicineId}`)
+                .then((response) => response.json())
+                .then((medicine) => {
+                    const detailsSection = document.querySelector(".details-section");
+                    detailsSection.innerHTML = `
+                        <h2>${medicine.name}</h2>
+                        <img src="${medicine.image_url}" alt="${medicine.name}">
+                        <p><strong>Type:</strong> ${medicine.type}</p>
+                        <p><strong>Brand:</strong> ${medicine.brand}</p>
+                        <p><strong>Description:</strong> ${medicine.description}</p>
+                        <p><span class="price">৳${medicine.price}</span></p>
+                        <button class="buy-button">Buy Now</button>
+                    `;
+
+                    detailsSection.scrollIntoView({ behavior: "smooth" });
+                })
+                .catch((error) => {
+                    console.error("Error fetching medicine details:", error);
+                });
+        }
+
+        // Add click event for "Buy Now" button
+        document.addEventListener("click", function (e) {
+            if (e.target.classList.contains("buy-button")) {
+                alert("Thank you for your purchase!"); 
+            }
+        });
+
+    </script>
+</body>
+</html>
 </body>
 </html>

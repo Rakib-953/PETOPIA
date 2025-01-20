@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cat Toys - PETOPIA</title>
     <link rel="stylesheet" href="toysstyle.css">
 </head>
+
 <body>
     <!-- Navbar -->
     <div class="navbar">
@@ -27,10 +29,10 @@
                         <div class="dropdown-submenu">
                             <a href="Cat_Dog.html">Cat&Dog</a>
                             <div class="submenu-content">
-                                <a href="#cat-food">Food</a>
-                                <a href="#cat-accessories">Accessories</a>
-                                <a href="cat-toys.html" class="active">Toys</a>
-                                <a href="cat-medicine.html">Medicine</a>
+                                <a href="Food.php">Food</a>
+                                <a href="Accessories.php">Accessories</a>
+                                <a href="toys.php" class="active">Toys</a>
+                                <a href="medicine.php">Medicine</a>
                             </div>
                         </div>
                     </div>
@@ -57,89 +59,158 @@
     </div>
 
     <!-- Toys Section -->
-    <main>
-        <section class="shop-section">
-            <h1>Cat Toy Price in BD</h1>
-            <p>Explore a wide range of cat toys at PETOPIA. Find the best deals and make your cats happy!</p>
-            <div class="filter-section">
-                <h3>Filter by Price</h3>
-                <ul>
-                    <li><a href="#">৳0 - ৳100</a></li>
-                    <li><a href="#">৳101 - ৳500</a></li>
-                    <li><a href="#">Above ৳500</a></li>
-                </ul>
+    <!DOCTYPE html>
+    <html lang="en">
 
-                <h3>Categories</h3>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cat Toys</title>
+        <link rel="stylesheet" href="foodstyle.css">
+    </head>
+
+    <body>
+
+        <main>
+            <div class="filters-section">
+                <h3>Filter by Type</h3>
                 <ul>
-                    <li><a href="#">Cat Wand</a></li>
-                    <li><a href="#">Cat Ball</a></li>
-                    <li><a href="#">Interactive Toys</a></li>
-                    <li><a href="#">Cat Chew Toys</a></li>
+                    <li><input type="checkbox" id="mouse-toys" name="mouse-toys"> Mouse Toys</li>
+                    <li><input type="checkbox" id="feather-wands" name="feather-wands"> Feather Wands</li>
+                    <li><input type="checkbox" id="puzzle-toys" name="puzzle-toys"> Puzzle Toys</li>
                 </ul>
+                <h3>Price Range</h3>
+                <input type="range" min="0" max="5000" value="2500">
             </div>
 
-            <div class="product-grid">
-                <!-- Example Product Cards -->
-                <div class="product-card">
-                    <img src="mouse_toy.jpg" alt="Mouse Toy">
-                    <h3>Interactive Mouse Toy</h3>
-                    <p><span class="price">৳150.00</span> <span class="discount">৳200.00</span></p>
-                </div>
-                <div class="product-card">
-                    <img src="feather_wand.jpg" alt="Feather Wand">
-                    <h3>Feather Wand Toy</h3>
-                    <p><span class="price">৳180.00</span> <span class="discount">৳250.00</span></p>
-                </div>
-                <div class="product-card">
-                    <img src="ball_toys.jpg" alt="Ball Toys">
-                    <h3>Colorful Rolling Balls</h3>
-                    <p><span class="price">৳100.00</span> <span class="discount">৳120.00</span></p>
-                </div>
-                <div class="product-card">
-                    <img src="spring_toy.jpg" alt="Spring Toy">
-                    <h3>Spring Cat Toy</h3>
-                    <p><span class="price">৳90.00</span> <span class="discount">৳150.00</span></p>
-                </div>
+            <section class="product-grid">
+                <h2>Cat Toys</h2>
+            </section>
+
+            <div class="pagination">
+                <a href="#">&laquo;</a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">&raquo;</a>
             </div>
-        </section>
+
+            <section class="details-section">
+                <h2>Toy Details</h2>
+            </section>
+
+            <!-- Pagination Section -->
+            <div class="pagination">
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">Next</a>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-container">
+                    <div class="footer-section">
+                        <img src="PETOPIA_logo1.png" alt="PETOPIA Logo" class="footer-logo">
+                        <p>PETOPIA is your one-stop online pet shop, providing quality food and accessories for your beloved pets. We deliver happiness to your doorstep!</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="cat-food.html">Cat Food</a></li>
+                            <li><a href="cat-accessories.html">Accessories</a></li>
+                            <li><a href="cat-toys.html">Toys</a></li>
+                            <li><a href="reviews.html">Reviews</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Contact</h3>
+                        <p><strong>Address:</strong> Gulshan Link Road, Dhaka - 1212</p>
+                        <p><strong>Email:</strong> <a href="mailto:petzonebd@gmail.com">petzonebd@gmail.com</a></p>
+                        <p><strong>Phone:</strong> <a href="tel:+8801941320355">+8801941-320355</a></p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 PETOPIA. All Rights Reserved.</p>
+                </div>
+            </footer>
+
+            <script src="script.js"></script>
+    </body>
+
     </main>
 
-    <!-- Pagination Section -->
-    <div class="pagination">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">Next</a>
-    </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <img src="PETOPIA_logo1.png" alt="PETOPIA Logo" class="footer-logo">
-                <p>PETOPIA is your one-stop online pet shop, providing quality food and accessories for your beloved pets. We deliver happiness to your doorstep!</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="cat-food.html">Cat Food</a></li>
-                    <li><a href="cat-accessories.html">Accessories</a></li>
-                    <li><a href="cat-toys.html">Toys</a></li>
-                    <li><a href="reviews.html">Reviews</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <p><strong>Address:</strong> Gulshan Link Road, Dhaka - 1212</p>
-                <p><strong>Email:</strong> <a href="mailto:petzonebd@gmail.com">petzonebd@gmail.com</a></p>
-                <p><strong>Phone:</strong> <a href="tel:+8801941320355">+8801941-320355</a></p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 PETOPIA. All Rights Reserved.</p>
-        </div>
-    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const productGrid = document.querySelector(".product-grid");
 
-    <script src="script.js"></script>
+            // Fetch toys from the backend
+            fetch("cat_toys_backend.php?action=list")
+                .then((response) => response.json())
+                .then((toys) => {
+                    productGrid.innerHTML = "";
+                    toys.forEach((toy) => {
+                        const productCard = `
+                            <div class="product-card" data-id="${toy.toy_id}">
+                                <img src="${toy.image_url}" alt="${toy.name}">
+                                <h3>${toy.name}</h3>
+                                <p>
+                                    <span class="price">৳${toy.price}</span>
+                                    <span class="discount">৳${toy.discount_price}</span>
+                                </p>
+                            </div>`;
+                        productGrid.innerHTML += productCard;
+                    });
+
+                    // Add click event to each product card
+                    document.querySelectorAll(".product-card").forEach((card) => {
+                        card.addEventListener("click", function() {
+                            const toyId = this.getAttribute("data-id");
+                            showToyDetails(toyId);
+                        });
+                    });
+                })
+                .catch((error) => {
+                    console.error("Error fetching toys:", error);
+                });
+        });
+
+        function showToyDetails(toyId) {
+            // Fetch details of the selected toy
+            fetch(`cat_toys_backend.php?toy_id=${toyId}`)
+                .then((response) => response.json())
+                .then((toy) => {
+                    const detailsSection = document.querySelector(".details-section");
+                    detailsSection.innerHTML = `
+                        <h2>${toy.name}</h2>
+                        <img src="${toy.image_url}" alt="${toy.name}">
+                        <p><strong>Type:</strong> ${toy.type}</p>
+                        <p><strong>Brand:</strong> ${toy.brand}</p>
+                        <p><strong>Description:</strong> ${toy.description}</p>
+                        <p><span class="price">৳${toy.price}</span></p>
+                        <button class="buy-button">Buy Now</button>
+                    `;
+
+                    detailsSection.scrollIntoView({
+                        behavior: "smooth"
+                    });
+                })
+                .catch((error) => {
+                    console.error("Error fetching toy details:", error);
+                });
+        }
+
+        // Add click event for "Buy Now" button
+        document.addEventListener("click", function(e) {
+            if (e.target.classList.contains("buy-button")) {
+                alert("Thank you for your purchase!");
+            }
+        });
+    </script>
 </body>
+
 </html>
+
+
